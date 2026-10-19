@@ -1,0 +1,1 @@
+SELECT emp_name, department, salary FROM employee; 
