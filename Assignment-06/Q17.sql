@@ -1,0 +1,18 @@
+DELIMITER //
+
+CREATE FUNCTION CalculateBonus(marks DECIMAL(5,2))
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    IF marks >= 90 THEN
+        RETURN 1000;
+    ELSEIF marks >= 75 THEN
+        RETURN 500;
+    ELSE
+        RETURN 200;
+    END IF;
+END //
+
+DELIMITER ;
+
+SELECT CalculateBonus(95) AS Bonus;

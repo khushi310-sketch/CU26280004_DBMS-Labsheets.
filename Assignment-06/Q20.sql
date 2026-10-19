@@ -1,0 +1,12 @@
+DELIMITER //
+
+CREATE FUNCTION AgeAfterFiveYears(age INT)
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    RETURN age + 5;
+END //
+
+DELIMITER ;
+
+SELECT AgeAfterFiveYears(20) AS FutureAge;

@@ -1,0 +1,12 @@
+DELIMITER //
+
+CREATE FUNCTION DoubleMarks(marks DECIMAL(5,2))
+RETURNS DECIMAL(6,2)
+DETERMINISTIC
+BEGIN
+    RETURN marks * 2;
+END //
+
+DELIMITER ;
+
+SELECT DoubleMarks(45.50) AS DoubleValue;
