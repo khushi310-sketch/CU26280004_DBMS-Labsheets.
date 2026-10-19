@@ -1,0 +1,1 @@
+INSERT INTO Enrollment VALUES (5,999,'DBMS'); 

@@ -1,0 +1,1 @@
+INSERT INTO Enrollment VALUES (1,105,'Data Mining');
