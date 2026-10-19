@@ -1,0 +1,6 @@
+SHOW TRIGGERS;
+
+
+SELECT * FROM Doctors;
+SELECT * FROM Doctor_Audit;
+SELECT * FROM Fee_Log;
