@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Student</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Student</h1>
+
+        <p>Enter the roll number of the student you want to delete.</p>
+
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+
+        <form method="POST"
+              onsubmit="return confirm('Are you sure you want to delete this student?');">
+            <label>Roll Number</label>
+            <input type="text" name="roll_no" required>
+
+            <button type="submit">Delete Student</button>
+        </form>
+
+        <p><a href="/">Back to Home</a></p>
+        <p><a href="/students">View All Students</a></p>
+    </div>
+</body>
+</html>

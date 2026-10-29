@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Student</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Search Student</h1>
+
+        <form method="POST">
+            <label>Enter Roll Number</label>
+            <input type="text" name="roll_no"
+                   placeholder="e.g. MCA001" required>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if searched %}
+            {% if student %}
+                <h2>Student Found</h2>
+                <table>
+                    <tr><th>Roll Number</th><td>{{ student.roll_no }}</td></tr>
+                    <tr><th>Name</th><td>{{ student.name }}</td></tr>
+                    <tr><th>Course</th><td>{{ student.course }}</td></tr>
+                    <tr><th>Email</th><td>{{ student.email }}</td></tr>
+                </table>
+            {% else %}
+                <p>No student found with that roll number.</p>
+            {% endif %}
+        {% endif %}
+
+        <p><a href="/">Back to Home</a></p>
+    </div>
+</body>
+</html>

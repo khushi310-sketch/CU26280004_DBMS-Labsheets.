@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Student</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Update Student</h1>
+
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+
+        <form method="POST">
+            <label>Enter Roll Number</label>
+            <input type="text" name="roll_no" required>
+            <button type="submit" name="action" value="search">
+                Find Student
+            </button>
+        </form>
+
+        {% if student %}
+        <hr>
+        <h2>Edit Details</h2>
+
+        <form method="POST">
+            <input type="hidden" name="roll_no"
+                   value="{{ student.roll_no }}">
+
+            <label>Student Name</label>
+            <input type="text" name="name"
+                   value="{{ student.name }}" required>
+
+            <label>Course</label>
+            <input type="text" name="course"
+                   value="{{ student.course }}" required>
+
+            <label>Email</label>
+            <input type="email" name="email"
+                   value="{{ student.email }}" required>
+
+            <button type="submit" name="action" value="update">
+                Save Changes
+            </button>
+        </form>
+        {% endif %}
+
+        <p><a href="/">Back to Home</a></p>
+    </div>
+</body>
+</html>
