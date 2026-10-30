@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1>Hospital Inventory Report</h1>
+    <p>Medicine stock and price summary</p>
+</header>
+
+<main class="container">
+    <p><a href="/">Home</a> | <a href="/medicines">View Medicines</a></p>
+
+    {% for message in get_flashed_messages() %}
+        <p class="message">{{ message }}</p>
+    {% endfor %}
+
+    <h2>Inventory Summary</h2>
+
+    <table>
+        <tr>
+            <th>Total Medicines</th>
+            <td>{{ total_medicines }}</td>
+        </tr>
+        <tr>
+            <th>Total Stock Units</th>
+            <td>{{ total_stock }}</td>
+        </tr>
+        <tr>
+            <th>Low Stock Medicines (below 30)</th>
+            <td>{{ low_stock_count }}</td>
+        </tr>
+    </table>
+
+    <h2>Price Summary</h2>
+
+    {% if most_expensive %}
+    <p><strong>Most Expensive:</strong>
+        {{ most_expensive.name }} — ₹{{ most_expensive.price }}
+    </p>
+    {% else %}
+    <p>No medicine records available.</p>
+    {% endif %}
+
+    {% if cheapest %}
+    <p><strong>Cheapest:</strong>
+        {{ cheapest.name }} — ₹{{ cheapest.price }}
+    </p>
+    {% endif %}
+</main>
+</body>
+</html>

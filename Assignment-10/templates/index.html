@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Medicine Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Hospital Medicine Management System</h1>
+        <p>Manage medicines and hospital inventory easily</p>
+    </header>
+
+    <main class="container">
+        <h2>Welcome to the Dashboard</h2>
+        <p>Select an option below to manage hospital medicines.</p>
+
+        <div class="menu">
+            <a href="/add">Add Medicine</a>
+            <a href="/medicines">View Medicines</a>
+            <a href="/search">Search Medicine</a>
+            <a href="/update">Update Stock</a>
+            <a href="/delete">Delete Medicine</a>
+            <a href="/low-stock">Low Stock Medicines</a>
+            <a href="/report">Inventory Report</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>Hospital Medicine Management System | MCA Lab Project</p>
+    </footer>
+</body>
+</html>

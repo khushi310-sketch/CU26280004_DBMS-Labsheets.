@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Medicines</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1>Hospital Medicine Inventory</h1>
+</header>
+
+<main class="container">
+    <p><a href="/">Home</a> | <a href="/add">Add Medicine</a> | <a href="/search">Search Medicine</a></p>
+
+    <h2>All Medicines</h2>
+
+    {% for message in get_flashed_messages() %}
+        <p class="message">{{ message }}</p>
+    {% endfor %}
+
+    {% if medicines %}
+    <table>
+        <thead>
+            <tr>
+                <th>Medicine ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price (₹)</th>
+                <th>Stock</th>
+                <th>Manufacturer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for medicine in medicines %}
+            <tr>
+                <td>{{ medicine.medicine_id }}</td>
+                <td>{{ medicine.name }}</td>
+                <td>{{ medicine.category }}</td>
+                <td>{{ "%.2f"|format(medicine.price) }}</td>
+                <td>{{ medicine.stock }}</td>
+                <td>{{ medicine.manufacturer }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No medicines found in the inventory.</p>
+    {% endif %}
+</main>
+</body>
+</html>

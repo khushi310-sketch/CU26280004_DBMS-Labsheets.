@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low Stock Medicines</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1>Low Stock Medicines</h1>
+    <p>Medicines with stock below 30</p>
+</header>
+
+<main class="container">
+    <p><a href="/">Home</a> | <a href="/medicines">View All Medicines</a></p>
+
+    {% for message in get_flashed_messages() %}
+        <p class="message">{{ message }}</p>
+    {% endfor %}
+
+    {% if medicines %}
+    <table>
+        <thead>
+            <tr>
+                <th>Medicine ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price (₹)</th>
+                <th>Stock</th>
+                <th>Manufacturer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for medicine in medicines %}
+            <tr>
+                <td>{{ medicine.medicine_id }}</td>
+                <td>{{ medicine.name }}</td>
+                <td>{{ medicine.category }}</td>
+                <td>₹{{ medicine.price }}</td>
+                <td>{{ medicine.stock }}</td>
+                <td>{{ medicine.manufacturer }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>There are no low-stock medicines currently.</p>
+    {% endif %}
+</main>
+</body>
+</html>

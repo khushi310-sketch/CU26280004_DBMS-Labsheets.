@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Medicine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1>Search Medicine</h1>
+</header>
+
+<main class="container">
+    <p><a href="/">Home</a> | <a href="/medicines">View Medicines</a></p>
+
+    <form method="POST">
+        <label>Search by Medicine ID or Name</label>
+        <input type="text" name="keyword" placeholder="e.g. M101 or Paracetamol" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% for message in get_flashed_messages() %}
+        <p class="message">{{ message }}</p>
+    {% endfor %}
+
+    {% if searched %}
+        {% if medicines %}
+            <h2>Search Results</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Manufacturer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for medicine in medicines %}
+                    <tr>
+                        <td>{{ medicine.medicine_id }}</td>
+                        <td>{{ medicine.name }}</td>
+                        <td>{{ medicine.category }}</td>
+                        <td>₹{{ medicine.price }}</td>
+                        <td>{{ medicine.stock }}</td>
+                        <td>{{ medicine.manufacturer }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="message">No matching medicine found.</p>
+        {% endif %}
+    {% endif %}
+</main>
+</body>
+</html>
